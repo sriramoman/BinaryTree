@@ -1,9 +1,9 @@
 
 public class Queue {
 	class Node{
-		BinaryTree data;
+		BinaryTreeNode data;
 		Node next;
-		public Node(BinaryTree val){
+		public Node(BinaryTreeNode val){
 			data=val;
 			next=null;
 		}
@@ -11,7 +11,7 @@ public class Queue {
 	public int size;
 	Node front=null;
 	Node rear=null;
-	public void enq(BinaryTree data){
+	public void enq(BinaryTreeNode data){
 		Node newNode = new Node(data);
 		if(front!=null){
 			rear.next=newNode;
@@ -22,15 +22,15 @@ public class Queue {
 		rear=newNode;
 		size++;
 	}
-	public BinaryTree deq(){
+	public BinaryTreeNode deq(){
 		if(front==null)
 			throw new ArrayIndexOutOfBoundsException("Error dequeueing");
-		BinaryTree delNode = front.data;
+		BinaryTreeNode delNode = front.data;
 		front=front.next;
 		size--;
 		return delNode;
 	}
-	public BinaryTree poll(){
+	public BinaryTreeNode poll(){
 		return front.data;
 	}
 }

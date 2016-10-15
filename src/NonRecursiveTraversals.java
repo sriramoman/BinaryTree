@@ -4,7 +4,8 @@ public class NonRecursiveTraversals {
 		// TODO Auto-generated method stub
 		BinaryTreeNode tree = BinaryTree.create();
 //		inorderTraversal(tree);
-		postorderTraversal(tree);
+//		postorderTraversal(tree);
+        levelorderTraversal(tree);
 	}
 	public static void inorderTraversal(BinaryTreeNode root){
 		Stack stk = new Stack();
@@ -58,5 +59,16 @@ public class NonRecursiveTraversals {
         }
 	}
 
-
+	public static void levelorderTraversal(BinaryTreeNode root){
+        Queue queue = new Queue();
+        queue.enq(root);
+        while (queue.size!=0){
+            root=queue.deq();
+            System.out.println(root);
+            if (root.left!=null)
+                queue.enq(root.left);
+            if (root.right!=null)
+                queue.enq(root.right);
+        }
+    }
 }
