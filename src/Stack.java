@@ -1,5 +1,6 @@
 
 public class Stack {
+    int size=0;
 	class Node{
 		BinaryTreeNode data;
 		Node next;
@@ -12,6 +13,7 @@ public class Stack {
 		Node newNode=new Node(val);
 		newNode.next=top;
 		top=newNode;
+        size++;
 	}
 	public BinaryTreeNode peek(){
 		return top.data;
@@ -19,6 +21,7 @@ public class Stack {
 	BinaryTreeNode pop(){
 		BinaryTreeNode delData=top.data;
 		top=top.next;
+        size--;
 		return delData;
 	}
 	boolean isEmpty(){
