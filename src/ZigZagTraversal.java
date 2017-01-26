@@ -7,37 +7,34 @@ public class ZigZagTraversal {
         traverse(treeNode);
     }
     public static void traverse(BinaryTreeNode root){
-        boolean reverse=true;
+        boolean reverse=false;
         Queue q=new Queue();
         q.enq(root);
         q.enq(null);
         Stack stk=new Stack();
         while (q.size!=0){
             root=q.deq();
-            if(root!=null&& reverse==true)
+            if(root!=null&& reverse==false)
                 System.out.println(root);
             if (root==null){
-                if(reverse){
-//                    System.out.println("Stack");
+                if(!reverse){
                     while (!stk.isEmpty()){
-//                        stk.pop();
                         System.out.println(stk.pop());
                     }
-//                    System.out.println("Queue");
                 }
-                reverse=reverse?false:true;
+                reverse=!reverse;
                 if (q.size!=0)
                     q.enq(null);
             }
             else {
                 if (root.left!=null) {
                     q.enq(root.left);
-                    if (reverse)
+                    if (!reverse)
                         stk.push(root.left);
                 }
                 if(root.right!=null) {
                     q.enq(root.right);
-                    if (reverse)
+                    if (!reverse)
                         stk.push(root.right);
                 }
             }

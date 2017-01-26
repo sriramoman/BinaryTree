@@ -3,10 +3,12 @@ public class NonRecursiveTraversals {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BinaryTreeNode tree = BinaryTree.create();
+		preorderTraversal(tree);
 //		inorderTraversal(tree);
 //		postorderTraversal(tree);
-        levelorderTraversal(tree);
+        //levelorderTraversal(tree);
 	}
+	
 	public static void inorderTraversal(BinaryTreeNode root){
 		Stack stk = new Stack();
 		while(true){
@@ -26,14 +28,29 @@ public class NonRecursiveTraversals {
 		while(true){
 			while(root!=null){
 				System.out.println(root);
-				stk.push(root);
-				root=root.left;
+				if(root.right!=null)
+					stk.push(root.right);
+				root = root.left;
 			}
 			if(stk.isEmpty())
 				break;
-			root=stk.pop().right;
+			root=stk.pop();
 		}
 	}
+	
+	
+//	public static void preorderTraversal(BinaryTreeNode root){
+//		Stack stk = new Stack();
+//		stk.push(root);
+//		while(!stk.isEmpty()){
+//			while(root!=null){
+//				System.out.println(root);
+//				stk.push(root);
+//				root=root.left;
+//			}
+//			root=stk.pop().right;
+//		}
+//	}
 
 	public static void postorderTraversal(BinaryTreeNode root){
 		Stack stk = new Stack();
